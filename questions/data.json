@@ -1,0 +1,530 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "title": "Bubble Sort",
+      "leetcodeId": "N/A",
+      "topic": "Sorting Techniques",
+      "subTopic": "Basic Sorting",
+      "difficulty": "Easy",
+      "link": "https://leetcode.com/problems/sort-an-array",
+      "companies": [
+        "Amazon",
+        "Microsoft",
+        "Google"
+      ],
+      "coreConcept": "Repeatedly swap adjacent elements if they are in wrong order",
+      "approach": [
+        "Compare adjacent elements",
+        "Swap if left > right",
+        "Repeat for each pass",
+        "After each pass, largest element bubbles up to end"
+      ],
+      "commonPitfalls": [
+        "Forgetting to optimize with sorted array check",
+        "Not considering already sorted elements",
+        "Unnecessary comparisons in later passes"
+      ],
+      "timeComplexity": {
+        "best": "O(n)",
+        "average": "O(n²)",
+        "worst": "O(n²)"
+      },
+      "spaceComplexity": "O(1)",
+      "codeTemplate": "function bubbleSort(arr) {\n    for(let i = 0; i < arr.length; i++) {\n        for(let j = 0; j < arr.length-i-1; j++) {\n            if(arr[j] > arr[j+1]) {\n                [arr[j], arr[j+1]] = [arr[j+1], arr[j]];\n            }\n        }\n    }\n    return arr;\n}",
+      "patterns": [
+        "In-place sorting",
+        "Comparison based"
+      ],
+      "similarQuestions": [
+        "Selection Sort",
+        "Insertion Sort"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Two Sum",
+      "leetcodeId": "1",
+      "topic": "Arrays",
+      "subTopic": "Hash Table",
+      "difficulty": "Easy",
+      "link": "https://leetcode.com/problems/two-sum/",
+      "companies": [
+        "Amazon",
+        "Google",
+        "Facebook",
+        "Apple"
+      ],
+      "coreConcept": "Use hash map to store complement values",
+      "approach": [
+        "Use hash map to store numbers and their indices",
+        "For each number, check if its complement exists",
+        "Return indices if complement found"
+      ],
+      "commonPitfalls": [
+        "Not handling duplicate numbers",
+        "Using same element twice",
+        "Forgetting to check if complement exists before current index"
+      ],
+      "timeComplexity": {
+        "best": "O(n)",
+        "average": "O(n)",
+        "worst": "O(n)"
+      },
+      "spaceComplexity": "O(n)",
+      "codeTemplate": "function twoSum(nums, target) {\n    const map = new Map();\n    for(let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        if(map.has(complement)) {\n            return [map.get(complement), i];\n        }\n        map.set(nums[i], i);\n    }\n    return [];\n}",
+      "patterns": [
+        "Hash Table",
+        "One-pass Solution"
+      ],
+      "similarQuestions": [
+        "3Sum",
+        "4Sum",
+        "Two Sum II"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Binary Search",
+      "leetcodeId": "704",
+      "topic": "Binary Search",
+      "subTopic": "1D Arrays",
+      "difficulty": "Easy",
+      "link": "https://leetcode.com/problems/binary-search/",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Microsoft"
+      ],
+      "coreConcept": "Divide and conquer approach on sorted array",
+      "approach": [
+        "Initialize left and right pointers",
+        "Find mid point",
+        "Compare target with mid",
+        "Update pointers accordingly"
+      ],
+      "commonPitfalls": [
+        "Incorrect mid calculation (overflow)",
+        "Wrong boundary conditions",
+        "Infinite loop due to improper pointer updates"
+      ],
+      "timeComplexity": {
+        "best": "O(1)",
+        "average": "O(log n)",
+        "worst": "O(log n)"
+      },
+      "spaceComplexity": "O(1)",
+      "codeTemplate": "function binarySearch(nums, target) {\n    let left = 0, right = nums.length - 1;\n    while(left <= right) {\n        const mid = left + Math.floor((right - left) / 2);\n        if(nums[mid] === target) return mid;\n        if(nums[mid] < target) left = mid + 1;\n        else right = mid - 1;\n    }\n    return -1;\n}",
+      "patterns": [
+        "Binary Search",
+        "Two Pointers"
+      ],
+      "similarQuestions": [
+        "Search Insert Position",
+        "Search in Rotated Sorted Array"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Longest Palindromic Substring",
+      "leetcodeId": "5",
+      "topic": "Strings",
+      "subTopic": "Dynamic Programming",
+      "difficulty": "Medium",
+      "link": "https://leetcode.com/problems/longest-palindromic-substring/",
+      "companies": [
+        "Amazon",
+        "Microsoft",
+        "Facebook",
+        "Apple"
+      ],
+      "coreConcept": "Expand around center approach or Dynamic Programming",
+      "approach": [
+        "For each character, consider it as center",
+        "Expand around center for odd length palindromes",
+        "Expand around center for even length palindromes",
+        "Keep track of longest palindrome found"
+      ],
+      "commonPitfalls": [
+        "Not handling even length palindromes",
+        "Incorrect boundary checks",
+        "Inefficient DP implementation"
+      ],
+      "timeComplexity": {
+        "best": "O(n)",
+        "average": "O(n²)",
+        "worst": "O(n²)"
+      },
+      "spaceComplexity": "O(1)",
+      "codeTemplate": "function longestPalindrome(s) {\n    let start = 0, maxLength = 0;\n    \n    function expandAroundCenter(left, right) {\n        while(left >= 0 && right < s.length && s[left] === s[right]) {\n            const currLength = right - left + 1;\n            if(currLength > maxLength) {\n                start = left;\n                maxLength = currLength;\n            }\n            left--;\n            right++;\n        }\n    }\n    \n    for(let i = 0; i < s.length; i++) {\n        expandAroundCenter(i, i);   // odd length\n        expandAroundCenter(i, i+1); // even length\n    }\n    \n    return s.substring(start, start + maxLength);\n}",
+      "patterns": [
+        "Expand Around Center",
+        "Dynamic Programming"
+      ],
+      "similarQuestions": [
+        "Palindromic Substrings",
+        "Longest Palindromic Subsequence"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Reverse Linked List",
+      "leetcodeId": "206",
+      "topic": "Linked List",
+      "subTopic": "Single Linked List",
+      "difficulty": "Easy",
+      "link": "https://leetcode.com/problems/reverse-linked-list/",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Microsoft",
+        "Apple"
+      ],
+      "coreConcept": "Iterative or recursive reversal of linked list pointers",
+      "approach": [
+        "Keep track of previous, current, and next nodes",
+        "Reverse links while traversing",
+        "Handle edge cases (empty list, single node)"
+      ],
+      "commonPitfalls": [
+        "Not saving next pointer before reversing",
+        "Not handling null cases",
+        "Memory leaks in recursive solution"
+      ],
+      "timeComplexity": {
+        "best": "O(n)",
+        "average": "O(n)",
+        "worst": "O(n)"
+      },
+      "spaceComplexity": "O(1)",
+      "codeTemplate": "function reverseList(head) {\n    let prev = null;\n    let curr = head;\n    \n    while(curr !== null) {\n        let next = curr.next;\n        curr.next = prev;\n        prev = curr;\n        curr = next;\n    }\n    \n    return prev;\n}",
+      "patterns": [
+        "Iterative",
+        "Three Pointers"
+      ],
+      "similarQuestions": [
+        "Reverse Linked List II",
+        "Palindrome Linked List"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Generate Parentheses",
+      "leetcodeId": "22",
+      "topic": "Recursion",
+      "subTopic": "Backtracking",
+      "difficulty": "Medium",
+      "link": "https://leetcode.com/problems/generate-parentheses/",
+      "companies": [
+        "Google",
+        "Uber",
+        "Facebook"
+      ],
+      "coreConcept": "Backtracking with valid parentheses rules",
+      "approach": [
+        "Track open and closed parentheses count",
+        "Add open parenthesis if count < n",
+        "Add closed parenthesis if closed < open",
+        "Backtrack when invalid"
+      ],
+      "commonPitfalls": [
+        "Not tracking counts properly",
+        "Wrong base case",
+        "Incorrect backtracking implementation"
+      ],
+      "timeComplexity": {
+        "best": "O(4^n/√n)",
+        "average": "O(4^n/√n)",
+        "worst": "O(4^n/√n)"
+      },
+      "spaceComplexity": "O(n)",
+      "codeTemplate": "function generateParenthesis(n) {\n    const result = [];\n    \n    function backtrack(open, closed, str) {\n        if(str.length === 2*n) {\n            result.push(str);\n            return;\n        }\n        \n        if(open < n) backtrack(open+1, closed, str+'(');\n        if(closed < open) backtrack(open, closed+1, str+')');\n    }\n    \n    backtrack(0, 0, '');\n    return result;\n}",
+      "patterns": [
+        "Backtracking",
+        "String Building"
+      ],
+      "similarQuestions": [
+        "Valid Parentheses",
+        "Remove Invalid Parentheses"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Number of 1 Bits",
+      "leetcodeId": "191",
+      "topic": "Bit Manipulation",
+      "subTopic": "Bit Counting",
+      "difficulty": "Easy",
+      "link": "https://leetcode.com/problems/number-of-1-bits/",
+      "companies": [
+        "Apple",
+        "Microsoft"
+      ],
+      "coreConcept": "Bit manipulation to count set bits",
+      "approach": [
+        "Use n & (n-1) to clear least significant bit",
+        "Count number of operations needed",
+        "Alternative: Use built-in methods"
+      ],
+      "commonPitfalls": [
+        "Not handling negative numbers",
+        "Infinite loop with wrong bit manipulation",
+        "Overflow issues"
+      ],
+      "timeComplexity": {
+        "best": "O(1)",
+        "average": "O(1)",
+        "worst": "O(1)"
+      },
+      "spaceComplexity": "O(1)",
+      "codeTemplate": "function hammingWeight(n) {\n    let count = 0;\n    while(n !== 0) {\n        n &= (n - 1);\n        count++;\n    }\n    return count;\n}",
+      "patterns": [
+        "Bit Manipulation",
+        "Brian Kernighan's Algorithm"
+      ],
+      "similarQuestions": [
+        "Counting Bits",
+        "Binary Watch"
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Valid Parentheses",
+      "leetcodeId": "20",
+      "topic": "Stack & Queue",
+      "subTopic": "Stack",
+      "difficulty": "Easy",
+      "link": "https://leetcode.com/problems/valid-parentheses/",
+      "companies": [
+        "Google",
+        "Amazon",
+        "Facebook"
+      ],
+      "coreConcept": "Using stack to match parentheses pairs",
+      "approach": [
+        "Push opening brackets onto stack",
+        "Pop and compare for closing brackets",
+        "Check if stack is empty at end"
+      ],
+      "commonPitfalls": [
+        "Not handling empty string",
+        "Not checking stack emptiness at end",
+        "Wrong bracket matching"
+      ],
+      "timeComplexity": {
+        "best": "O(n)",
+        "average": "O(n)",
+        "worst": "O(n)"
+      },
+      "spaceComplexity": "O(n)",
+      "codeTemplate": "function isValid(s) {\n    const stack = [];\n    const map = {\n        '(': ')',\n        '{': '}',\n        '[': ']'\n    };\n    \n    for(let char of s) {\n        if(map[char]) {\n            stack.push(char);\n        } else {\n            if(map[stack.pop()] !== char) return false;\n        }\n    }\n    \n    return stack.length === 0;\n}",
+      "patterns": [
+        "Stack",
+        "String Processing"
+      ],
+      "similarQuestions": [
+        "Generate Parentheses",
+        "Longest Valid Parentheses"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Merge k Sorted Lists",
+      "leetcodeId": "23",
+      "topic": "Heaps",
+      "subTopic": "Priority Queue",
+      "difficulty": "Hard",
+      "link": "https://leetcode.com/problems/merge-k-sorted-lists/",
+      "companies": [
+        "Amazon",
+        "Google",
+        "Microsoft",
+        "Facebook"
+      ],
+      "coreConcept": "Using min heap to merge multiple sorted lists",
+      "approach": [
+        "Create min heap with first elements",
+        "Pop minimum element and add to result",
+        "Push next element from same list",
+        "Repeat until heap empty"
+      ],
+      "commonPitfalls": [
+        "Not handling empty lists",
+        "Incorrect heap implementation",
+        "Memory management issues"
+      ],
+      "timeComplexity": {
+        "best": "O(N log k)",
+        "average": "O(N log k)",
+        "worst": "O(N log k)"
+      },
+      "spaceComplexity": "O(k)",
+      "codeTemplate": "function mergeKLists(lists) {\n    const minHeap = new MinHeap();\n    \n    // Add first elements\n    for(let i = 0; i < lists.length; i++) {\n        if(lists[i]) minHeap.push([lists[i].val, i]);\n    }\n    \n    const dummy = new ListNode(0);\n    let curr = dummy;\n    \n    while(!minHeap.isEmpty()) {\n        const [val, listIndex] = minHeap.pop();\n        curr.next = lists[listIndex];\n        curr = curr.next;\n        lists[listIndex] = lists[listIndex].next;\n        \n        if(lists[listIndex]) {\n            minHeap.push([lists[listIndex].val, listIndex]);\n        }\n    }\n    \n    return dummy.next;\n}",
+      "patterns": [
+        "Priority Queue",
+        "Divide and Conquer"
+      ],
+      "similarQuestions": [
+        "Merge Two Sorted Lists",
+        "Ugly Number II"
+      ]
+    },
+    {
+      "id": "1738449961397",
+      "dateAdded": "2025-02-01T22:46:01.397Z",
+      "status": "Not Started",
+      "confidence": 1,
+      "lastPracticed": null,
+      "title": "Power Of Two",
+      "link": "https://leetcode.com/problems/power-of-two/description/",
+      "topic": "Bit Manipulation",
+      "difficulty": "Easy",
+      "coreConcept": "A number n is a power of two if there exists an integer k such that \n𝑛\n=\n2\n𝑘\n. In binary representation, this means that the number has exactly one 1 bit. For example:\n\n1\n in binary is 0001\n\n2\n in binary is 0010\n\n4\n in binary is 0100",
+      "approach": [
+        "Approach Steps Check for non-positive numbers: A power of two is always a positive integer. If n <= 0, return false.  Binary manipulation: Use bitwise operations to check if n is a power of two.  A power of two has exactly one 1 bit in its binary representation.  Using the property  𝑛 & ( 𝑛 − 1 ) :  If n is a power of two,  𝑛 & ( 𝑛 − 1 )  results in 0.  For example, if  𝑛 = 4 ,  𝑛 = 100 2  and  𝑛 − 1 = 011 2 ; hence,  𝑛 & ( 𝑛 − 1 ) = 100 & 011 = 000 ."
+      ],
+      "pitfalls": [
+        "Common Pitfalls Zero and Negative Numbers: Ensure to handle cases where n is zero or negative. These should not be considered powers of two.  Bitwise Operators Precedence: Remember that bitwise operators have lower precedence than equality operators. Always use parentheses to ensure the correct order of operations."
+      ],
+      "codeTemplate": "class Solution {\npublic:\n    bool isPowerOfTwo(int n) {\n        if (n <= 0) {\n            return false;\n        }\n        return (n & (n - 1)) == 0;\n    }\n};\n",
+      "timeComplexity": "O(1)",
+      "spaceComplexity": "O(1)",
+      "tags": [],
+      "commonPitfalls": []
+    }
+  ],
+  "topics": {
+    "Sorting Techniques": {
+      "name": "Sorting Techniques",
+      "description": "Basic and advanced sorting algorithms",
+      "subTopics": [
+        "Basic Sorting",
+        "Quick Sort",
+        "Merge Sort",
+        "Counting Sort"
+      ],
+      "patterns": [
+        "In-place",
+        "Divide & Conquer",
+        "Comparison based",
+        "Non-comparison based"
+      ]
+    },
+    "Arrays": {
+      "name": "Arrays",
+      "description": "Array manipulation and algorithms",
+      "subTopics": [
+        "Basic Operations",
+        "Two Pointers",
+        "Sliding Window",
+        "Kadane's Algorithm"
+      ],
+      "patterns": [
+        "In-place modification",
+        "Two Pointers",
+        "Prefix Sum",
+        "Sliding Window"
+      ]
+    },
+    "Binary Search": {
+      "name": "Binary Search",
+      "description": "Search algorithm for sorted arrays",
+      "subTopics": [
+        "1D Arrays",
+        "2D Arrays",
+        "Search Space",
+        "Modified Binary Search"
+      ],
+      "patterns": [
+        "Basic Binary Search",
+        "Rotated Array",
+        "Search Space Reduction"
+      ]
+    },
+    "Strings": {
+      "name": "Strings",
+      "description": "String manipulation and algorithms",
+      "subTopics": [
+        "Basic Operations",
+        "Pattern Matching",
+        "Dynamic Programming"
+      ],
+      "patterns": [
+        "Two Pointers",
+        "Sliding Window",
+        "DP"
+      ]
+    },
+    "Linked List": {
+      "name": "Linked List",
+      "description": "Linked list operations and algorithms",
+      "subTopics": [
+        "Single Linked List",
+        "Double Linked List",
+        "Circular Linked List"
+      ],
+      "patterns": [
+        "Two Pointers",
+        "Fast/Slow Pointer",
+        "Reversal"
+      ]
+    },
+    "Recursion": {
+      "name": "Recursion",
+      "description": "Recursive problem-solving patterns",
+      "subTopics": [
+        "Backtracking",
+        "Divide & Conquer",
+        "Memoization"
+      ],
+      "patterns": [
+        "Tree Recursion",
+        "Backtracking",
+        "Memory Function"
+      ]
+    },
+    "Bit Manipulation": {
+      "name": "Bit Manipulation",
+      "description": "Bit-level operations and algorithms",
+      "subTopics": [
+        "Basic Operations",
+        "Bit Counting",
+        "Bit Tricks"
+      ],
+      "patterns": [
+        "AND/OR/XOR",
+        "Bit Shifting",
+        "Power of Two"
+      ]
+    },
+    "Stack & Queue": {
+      "name": "Stack & Queue",
+      "description": "Stack and Queue based problems",
+      "subTopics": [
+        "Basic Operations",
+        "Monotonic Stack",
+        "Priority Queue"
+      ],
+      "patterns": [
+        "LIFO/FIFO",
+        "Monotonic Stack",
+        "Two Stacks"
+      ]
+    },
+    "Heaps": {
+      "name": "Heaps",
+      "description": "Heap/Priority Queue based problems",
+      "subTopics": [
+        "Min Heap",
+        "Max Heap",
+        "Custom Heap"
+      ],
+      "patterns": [
+        "K-th Element",
+        "Merge K Items",
+        "Running Median"
+      ]
+    }
+  },
+  "practiceLogs": []
+}
