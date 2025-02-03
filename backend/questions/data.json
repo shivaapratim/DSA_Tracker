@@ -1,0 +1,32 @@
+{
+  "questions": [],
+  "practiceLogs": [],
+  "topics": {
+    "Sorting Techniques": {
+      "name": "Sorting Techniques",
+      "description": "Basic and advanced sorting algorithms",
+      "subTopics": [
+        "Basic Sorting",
+        "Quick Sort",
+        "Merge Sort"
+      ],
+      "patterns": [
+        "In-place",
+        "Divide & Conquer"
+      ]
+    },
+    "Arrays": {
+      "name": "Arrays",
+      "description": "Array manipulation and algorithms",
+      "subTopics": [
+        "Basic Operations",
+        "Two Pointers",
+        "Sliding Window"
+      ],
+      "patterns": [
+        "In-place modification",
+        "Two Pointers"
+      ]
+    }
+  }
+}

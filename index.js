@@ -9,10 +9,10 @@ const PORT = 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(path.join(__dirname, './frontend')));
 
 // Path to data.json
-const dataFile = path.join(__dirname, '../questions/data.json');
+const dataFile = path.join(__dirname, './questions/data.json');
 
 // Initialize data.json if it doesn't exist
 const initializeData = async () => {
@@ -68,15 +68,15 @@ const validateQuestionData = (req, res, next) => {
 
 // Routes
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/index.html'));
+    res.sendFile(path.join(__dirname, './frontend/index.html'));
 });
 
 app.get('/questions', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/questions.html'));
+    res.sendFile(path.join(__dirname, './frontend/questions.html'));
 });
 
 app.get('/add', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/add.html'));
+    res.sendFile(path.join(__dirname, './frontend/add.html'));
 });
 
 // API Routes
