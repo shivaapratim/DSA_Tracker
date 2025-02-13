@@ -623,7 +623,7 @@
             <div class="nav-content">
                 <a href="/" class="logo">
                     <i class="fas fa-code"></i>
-                    DSA Bhaukaal
+                    DSA Tracker
                 </a>
                 <div class="nav-links">
                     <a href="/" class="nav-link">
@@ -1039,8 +1039,8 @@
                         <div class="detail-section">
                             <h3>Common Pitfalls</h3>
                             <ul>
-                                ${(question.commonPitfalls || ['None specified']).map(pitfall => `
-                                    <li>${pitfall}</li>
+                                ${(question.commonPitfalls).map(pitfalls => `
+                                    <li>${pitfalls}</li>
                                 `).join('')}
                             </ul>
                         </div>
