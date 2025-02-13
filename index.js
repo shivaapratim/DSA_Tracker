@@ -2,12 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs-extra');
 const path = require('path');
-const mongoose= require('mongoose');
-
-mongoose.connect()
-
-const app = express();
-const PORT = 3000;
 
 // Middleware
 app.use(cors());
