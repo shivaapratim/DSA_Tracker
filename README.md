@@ -54,7 +54,7 @@ Though a full-stack product, I implemented testing practices that align with rea
 
 ---
 
-## 📸
+## 📸 ![alt text](image.png) ![alt text](image-1.png) ![alt text](image-2.png)
 
 > _(Screenshots can be added here to show: Add Question page, Progress View, Similar Problems tab, etc.)_
 
