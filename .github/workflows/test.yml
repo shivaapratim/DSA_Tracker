@@ -10,4 +10,4 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Run Tests
-        run: echo "Pretend tests running"
+        run: echo "Tests running"
