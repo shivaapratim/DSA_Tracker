@@ -18,5 +18,6 @@ describe('User End-to-End Flow', () => {
     cy.get('button[type="submit"]').click();
 
     cy.url().should('include', '/dashboard');
+    cy.url().should('include', '/dashboard');
   });
 });
