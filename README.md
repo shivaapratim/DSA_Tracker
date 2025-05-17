@@ -42,8 +42,6 @@ Though a full-stack product, I implemented testing practices that align with rea
 - 🛠️ **Dummy App Testing Setup**: Includes basic Express server mock + test scaffolding to show readiness for testing practices.
 - 🔄 **CI-ready structure** with test folders & scripts to plug into automated pipelines (e.g., GitHub Actions).
 
-> While not all tests are exhaustive, the structure reflects my ability to design **testable, maintainable, and scalable** code — a key trait for SDET profiles.
-
 ---
 
 ## 🧰 Tech Stack
@@ -55,8 +53,6 @@ Though a full-stack product, I implemented testing practices that align with rea
 ---
 
 ## 📸 ![alt text](image.png) ![alt text](image-1.png) ![alt text](image-2.png)
-
-> _(Screenshots can be added here to show: Add Question page, Progress View, Similar Problems tab, etc.)_
 
 ---
 
